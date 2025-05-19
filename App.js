@@ -2,7 +2,6 @@ import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
 import React from 'react';
 import AppStack from './Navigations/AppStack';
-import AuthenicationScreen from './Screens/AuthenicationScreen';
 
 
 export default function App() {

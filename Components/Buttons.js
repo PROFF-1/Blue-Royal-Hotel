@@ -11,7 +11,7 @@ export default function Buttons({title, onPress}) {
 
 const styles = StyleSheet.create({
 container:{
-  backgroundColor:'black',
+  backgroundColor:'#14274A',
   alignItems:'center',
   justifyContent:'center',
   paddingVertical: 18

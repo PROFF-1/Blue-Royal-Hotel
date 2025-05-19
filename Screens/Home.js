@@ -3,16 +3,20 @@ import React from 'react'
 import Header from '../Components/Header'
 import SearchBar from '../Components/SearchBar'
 import Filters from '../Components/Filters'
-import Rooms from '../Components/Rooms'
+import Room from '../Components/Room'
 
-export default function Home() {
+export default function Home({navigation}) {
   return (
     <SafeAreaView style={styles.container}>
-      <Header/>
+      <View style={{paddingHorizontal: Platform.OS==='ios'? 16: 0}}>
+        <Header/>
+      </View>
+      <View style={{paddingHorizontal: Platform.OS==='ios'? 16: 0}}>
       <SearchBar/>
+      </View>
       <View style={{marginTop:23}}>
         <Image source={require('../assets/headerimage.png')}
-        style={{width: 385, borderRadius: 5}}/>
+        style={{width: 385, borderRadius: 5, marginLeft: Platform.OS==='ios'? 15: 0}}/>
         <View style={styles.cover}>
           <Text style={styles.text}>A Hotel for every</Text>
           <Text style={styles.text}>moment rich in emotion</Text>
@@ -26,7 +30,9 @@ export default function Home() {
       <Text style={styles.viewAll}>View all</Text>
       </View>
       <Filters/>
-      <Rooms/>
+      <View style={{paddingHorizontal: Platform.OS==='ios'? 16: 0}}>
+        <Room navigation={navigation}/>
+      </View>
     </SafeAreaView>
   )
 }
@@ -36,7 +42,7 @@ const styles = StyleSheet.create({
     flex:1,
     paddingTop: Platform.OS === 'android' ? 50 : 0,
     backgroundColor:'#fff',
-    paddingHorizontal: 16,
+    paddingHorizontal:Platform.OS==='android'? 16: 16,
 
   },
 
@@ -66,8 +72,9 @@ const styles = StyleSheet.create({
     flexDirection:'row',
     alignItems:'flex-end',
     justifyContent:'space-between',
-    marginLeft: 118,
-    marginTop: 18
+    marginLeft: Platform.OS==='android'?118: 128,
+    marginTop: 18,
+    paddingRight: Platform.OS === 'ios'? 16 :0
   },
 
   chooseARoom:{

@@ -6,6 +6,7 @@ import SplashScreen from '../Screens/SplashScreen';
 import AuthenicationScreen from '../Screens/AuthenicationScreen';
 import AppTabs from './AppTabs';
 import Home from '../Screens/Home';
+import Details from '../Screens/Details';
 
 
 const Stack = createStackNavigator();
@@ -18,6 +19,7 @@ export default function AppStack() {
         <Stack.Screen name="AuthenicationScreen" component={AuthenicationScreen} options={{ headerShown: false }} />
         <Stack.Screen name="Home" component={Home} options={{ headerShown: false }} />
         <Stack.Screen name='AppTabs' component={AppTabs} options={{headerShown:false}}/>
+        <Stack.Screen name='Details' component={Details} options={{headerShown:false}}/>
       </Stack.Navigator>
     </NavigationContainer>
   )

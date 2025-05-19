@@ -1,6 +1,7 @@
-import { StyleSheet, Text, View,Image, TouchableOpacity } from 'react-native'
+import { StyleSheet, Text, View,Image, TouchableOpacity, Platform } from 'react-native'
 import React from 'react'
 import { FlatList } from 'react-native-gesture-handler'
+import Details from '../Screens/Details'
 
 const details =[
   {
@@ -41,17 +42,27 @@ const details =[
   }
 ]
 
-export default function Rooms() {
+export default function Room({navigation}) {
 
   const renderItem =({item})=>(
-    <TouchableOpacity style={{marginRight: 12, borderRadius: 5}}>
+    <TouchableOpacity style={{marginRight: Platform.OS ==='andoid'? 12: 0, borderRadius: 5,marginLeft: Platform.OS === 'ios'? 16 : 0}} onPress={()=>navigation.navigate('Details',{
+      image: item.room,
+      name: item.name,
+      facility1: item.facility1,
+      facility2: item.facility2,
+      facility3: item.facility3,
+      price: item.price,
+      like:item.like,
+      rating: item.rating,
+      status:item.status
+    })}>
       <Image source={item.room} style={{ borderRadius: 5}}/>
       <View style={styles.detailContainer}>
         <View style={styles.nameAndRating}>
           <Text style={styles.name}>{item.name}</Text>
           <Image source={item.rating}/>
         </View>
-        <Text style={styles.price}>
+        <Text>
           {item.price}
         </Text>
         <View style={styles.facilitiesAndStaus}>
