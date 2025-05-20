@@ -64,7 +64,6 @@ const styles = StyleSheet.create({
   container:{
     height: 420,
     width:'100%',
-    backgroundColor:'plum', 
     marginBottom: 26,
   },
   layer:{

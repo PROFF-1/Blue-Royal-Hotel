@@ -14,7 +14,7 @@ export default function Rooms() {
         <Header/>
         <SearchBar/>
         <Filters/>
-        <ScrollView>
+        <ScrollView showsVerticalScrollIndicator={false}>
           <Room/>
           <View style={{height: 20}}></View>
           <Room/>

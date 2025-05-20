@@ -37,9 +37,9 @@ const details =[
     facility2: require('../assets/shower.png'),
     facility3: require('../assets/wi-fi.png'),
     like: require('../assets/heart.png'),
-    room: require('../assets/room1.png'),
+    room: require('../assets/room3.png'),
     status: 'Available'
-  }
+  },
 ]
 
 export default function Room({navigation}) {
@@ -56,7 +56,8 @@ export default function Room({navigation}) {
       rating: item.rating,
       status:item.status
     })}>
-      <Image source={item.room} style={{ borderRadius: 5}}/>
+      <Image source={item.room} style={{ borderRadius: 5, width:235,   // Set width for id '3', otherwise default
+    height: 303,}} />
       <View style={styles.detailContainer}>
         <View style={styles.nameAndRating}>
           <Text style={styles.name}>{item.name}</Text>

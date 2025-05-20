@@ -22,7 +22,7 @@ export default function AppTabs() {
         elevation: 0,
         backgroundColor: '#fafafa',
         borderTopWidth: 0,
-        height: 70,
+        height: 90,
         paddingHorizontal:16
       },
 }}>
