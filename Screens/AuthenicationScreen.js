@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View,SafeAreaView, Image, TextInput, Animated, Pressable, TouchableOpacity } from 'react-native'
+{/*import { StyleSheet, Text, View,SafeAreaView, Image, TextInput, Animated, Pressable, TouchableOpacity } from 'react-native'
 import React,{useRef, useState} from 'react'
 import Buttons from '../Components/Buttons';
 
@@ -16,7 +16,8 @@ export default function AuthenicationScreen({navigation}) {
     setSignIn(!signIn);
   }
   return (
-    <SafeAreaView style={styles.container}>
+    <SafeAreaView  style={{flex:1}}>
+      <View style={styles.container}>
       <Image source={require('../assets/logo2.png')}
       
       tintColor={'#7c6a46'}
@@ -122,6 +123,7 @@ export default function AuthenicationScreen({navigation}) {
                 <Text style={styles.text}>Continue with google</Text>
         </TouchableOpacity>
       </View>
+      </View>
     </SafeAreaView>
   )
 }
@@ -144,7 +146,186 @@ const styles = StyleSheet.create({
     position:'absolute',
     left:16,
     right:16,
-    top: 242
+    top: 242,
+  },
+
+  register:{
+    fontSize:15, 
+    color: '#7c6a46',
+    fontWeight: 700
+  },
+
+  OR:{
+    fontSize:15, 
+    color: '#7c6a46',
+    fontWeight: 600,
+    position:'absolute',
+    bottom:253,
+    left: 184
+  },
+
+  signUpOptions:{
+    position:'absolute',
+    bottom:90,
+    left: 16,
+    right: 16,
+    alignItems:'center',
+   
+   
+  },
+
+  options:{
+    width:'100%',
+    flexDirection:'row',
+    alignItems:'center',
+    paddingVertical: 17,
+    marginTop: 19,
+    borderWidth: 1,
+    borderColor:'#d9d9d9',
+    paddingLeft: 19
+  },
+  text: {
+    marginLeft: 70
+  }
+
+  
+})*/}
+
+import { StyleSheet, Text, View, SafeAreaView, Image, TextInput, Animated, Pressable, TouchableOpacity, Dimensions, Platform } from 'react-native'
+import React, { useRef, useState } from 'react'
+import Buttons from '../Components/Buttons';
+
+const SCREEN_WIDTH = Dimensions.get('window').width;
+
+export default function AuthenicationScreen({navigation}) {
+
+  const [signIn, setSignIn] = useState(false);
+  const slideAnim = useRef(new Animated.Value(0)).current;
+
+  const toggelForm = () => {
+    Animated.timing(slideAnim, {
+      toValue: signIn ? 0 : -SCREEN_WIDTH,
+      duration: 300,
+      useNativeDriver: true
+    }).start();
+    setSignIn(!signIn);
+  }
+
+  return (
+    <SafeAreaView style={{flex:1}}>
+      <View style={styles.container}>
+        <Image source={require('../assets/logo2.png')}
+          tintColor={'#7c6a46'}
+          style={{position:'absolute', top:Platform.OS ==='android'? 137: 107, left:156}}
+        />
+        <View style={{ width: SCREEN_WIDTH, overflow: 'hidden', alignSelf: 'center' }}>
+          <Animated.View style={{
+            flexDirection: 'row',
+            width: SCREEN_WIDTH * 2,
+            transform: [{ translateX: slideAnim }]
+          }}>
+            {/* Sign In Form */}
+            <View style={[styles.inputView, { width: SCREEN_WIDTH - 32 }]}>
+              {/* ...Sign In form content... */}
+              <View>
+                <View>
+                  <Text>Email</Text>
+                  <View style={styles.placeholder}>
+                    <Image source={require('../assets/email.png')} style={{marginRight: 15}}/>
+                    <TextInput placeholder='' style={{flex:1}} />
+                  </View>
+                </View>
+                <View>
+                  <Text>Password</Text>
+                  <View style={styles.placeholder}>
+                    <Image source={require('../assets/password.png')} style={{marginRight: 15}}/>
+                    <TextInput placeholder='' style={{flex:1}} />
+                  </View>
+                </View>
+              </View>
+              <Pressable style={{ marginTop: 23, alignItems: 'flex-end'}} >
+                <Text style={{color:'red', marginBottom: 18, width:'100%', textAlign: 'right'}}>Forgot password</Text>
+              </Pressable>
+              <Buttons title='Sign In' onPress={()=>navigation.navigate('AppTabs')}/>
+              <Pressable style={{ marginTop: 23, alignItems: 'flex-end'}} >
+                <Text onPress={toggelForm} style={styles.register}>Register now</Text>
+              </Pressable>
+            </View>
+            {/* Sign Up Form */}
+            <View style={[styles.inputView, { width: SCREEN_WIDTH - 32 }]}>
+              {/* ...Sign Up form content... */}
+              <View>
+                <View>
+                  <Text>Name</Text>
+                  <View style={styles.placeholder}>
+                    <Image source={require('../assets/name.png')} style={{marginRight: 15,}}/>
+                    <TextInput placeholder='' style={{flex:1}} />
+                  </View>
+                </View>
+                <View>
+                  <Text>Email</Text>
+                  <View style={styles.placeholder}>
+                    <Image source={require('../assets/email.png')} style={{marginRight: 15,}}/>
+                    <TextInput placeholder='' style={{flex:1}} />
+                  </View>
+                </View>
+                <View>
+                  <Text>Phone</Text>
+                  <View style={styles.placeholder}>
+                    <Image source={require('../assets/phone.png')} style={{marginRight: 15,}}/>
+                    <TextInput placeholder='' style={{flex:1}} />
+                  </View>
+                </View>
+                <View>
+                  <Text>Password</Text>
+                  <View style={styles.placeholder}>
+                    <Image source={require('../assets/password.png')} style={{marginRight: 15,}}/>
+                    <TextInput placeholder='' style={{flex:1}} />
+                  </View>
+                </View>
+              </View>
+              <Buttons title='Sign up' onPress={()=>navigation.navigate('AppTabs')}/>
+              <Pressable style={{ marginTop: 23, alignItems: 'flex-end'}} >
+                <Text onPress={toggelForm} style={styles.register}>Sign In</Text>
+              </Pressable>
+            </View>
+          </Animated.View>
+        </View>
+        <Text style={styles.OR}>OR</Text>
+        <View style={styles.signUpOptions}>
+          <TouchableOpacity style={styles.options}>
+            <Image source={require('../assets/applelogo.png')} style={{marginRight: 15}}/>
+            <Text style={styles.text}>Continue with apple</Text>
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.options}>
+            <Image source={require('../assets/googlelogo.png')} style={{marginRight: 15}}/>
+            <Text style={styles.text}>Continue with google</Text>
+          </TouchableOpacity>
+        </View>
+      </View>
+    </SafeAreaView>
+  )
+}
+
+
+const styles = StyleSheet.create({
+  container:{
+    flex:1,
+    paddingHorizontal:16,
+    justifyContent:'center'
+  },
+  placeholder:{
+    borderBottomColor:'#d9d9d9',
+    borderBottomWidth: 2,
+    alignItems:'center',
+    flexDirection:'row',
+    justifyContent:'space-between',
+    marginBottom: 15,
+    paddingBottom: Platform.OS==='ios' ? 10: 5
+  },
+  inputView:{
+    marginHorizontal: 16,
+    marginBottom: 105
   },
 
   register:{

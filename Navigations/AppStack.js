@@ -7,6 +7,7 @@ import AuthenicationScreen from '../Screens/AuthenicationScreen';
 import AppTabs from './AppTabs';
 import Home from '../Screens/Home';
 import Details from '../Screens/Details';
+import Bookings from '../Screens/Bookings';
 
 
 const Stack = createStackNavigator();
@@ -14,12 +15,13 @@ const Stack = createStackNavigator();
 export default function AppStack() {
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="AppTabs">
+      <Stack.Navigator initialRouteName="SplashScreen">
         <Stack.Screen name="SplashScreen" component={SplashScreen} options={{ headerShown: false }} />
         <Stack.Screen name="AuthenicationScreen" component={AuthenicationScreen} options={{ headerShown: false }} />
         <Stack.Screen name="Home" component={Home} options={{ headerShown: false }} />
         <Stack.Screen name='AppTabs' component={AppTabs} options={{headerShown:false}}/>
         <Stack.Screen name='Details' component={Details} options={{headerShown:false}}/>
+        <Stack.Screen name='Bookings' component={Bookings} options={{headerShown:false}}/>
       </Stack.Navigator>
     </NavigationContainer>
   )
