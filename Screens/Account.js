@@ -80,7 +80,7 @@ const styles = StyleSheet.create({
     flex:1,
     alignItems:'center',
     paddingHorizontal: 16,
-    paddingTop: 45
+    paddingTop: 76
   },
 
   name:{

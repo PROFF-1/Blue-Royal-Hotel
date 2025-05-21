@@ -9,18 +9,22 @@ import { ScrollView } from 'react-native-gesture-handler'
 
 export default function Rooms() {
   return (
-    <SafeAreaView style={styles.container}>
+    <SafeAreaView style={{flex: 1, backgroundColor: '#fff'}} >
+      <View style={styles.container}>
+
+      <Header/>
+              <SearchBar/>
+              <Filters/>
+              <ScrollView showsVerticalScrollIndicator={false}>
+                <Room/>
+                <View style={{height: 20}}></View>
+                <Room/>
+                <View style={{height: 20}}></View>
+                <Room/>
+            </ScrollView>
+      </View>
       
-        <Header/>
-        <SearchBar/>
-        <Filters/>
-        <ScrollView showsVerticalScrollIndicator={false}>
-          <Room/>
-          <View style={{height: 20}}></View>
-          <Room/>
-          <View style={{height: 20}}></View>
-          <Room/>
-      </ScrollView>
+       
       
     </SafeAreaView>
   )

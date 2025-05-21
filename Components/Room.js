@@ -45,7 +45,7 @@ const details =[
 export default function Room({navigation}) {
 
   const renderItem =({item})=>(
-    <TouchableOpacity style={{marginRight: Platform.OS ==='andoid'? 12: 0, borderRadius: 5,marginLeft: Platform.OS === 'ios'? 16 : 0}} onPress={()=>navigation.navigate('Details',{
+    <TouchableOpacity style={{marginRight:16, borderRadius: 5,}} onPress={()=>navigation.navigate('Details',{
       image: item.room,
       name: item.name,
       facility1: item.facility1,
